@@ -25,7 +25,7 @@ DisasterShield is an disaster relief system designed to optimize disaster respon
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/Pratiksha-1592/DisasterShield-Disaster-Relief-Optimizer-.git
-   cd disaster-relief-optimization
+   cd DisasterShield-Disaster-Relief-Optimizer-
 
 
 2. **Install dependencies:**

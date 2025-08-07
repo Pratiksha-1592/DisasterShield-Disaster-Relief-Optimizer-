@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 import folium
-from geopy.distance import geodesic
+from geopy.distance import geodesic            
 from streamlit_folium import st_folium
 import json
 from PIL import Image
@@ -32,7 +32,7 @@ import requests
 
 def predict_flood(inputs):
     # IBM Watson API key and token generation
-    API_KEY = "SHzusG7In1o2YosuocN02UTXbRxnShE0pYGax9NS9Eqx"
+    API_KEY = "enter your key"
     token_response = requests.post(
         'https://iam.cloud.ibm.com/identity/token', 
         data={"apikey": API_KEY, "grant_type": 'urn:ibm:params:oauth:grant-type:apikey'}
@@ -58,7 +58,7 @@ def predict_flood(inputs):
 
     # Send the request to the flood prediction model endpoint
     response_scoring = requests.post(
-        'https://eu-de.ml.cloud.ibm.com/ml/v4/deployments/9c34421c-e85b-4f19-9c52-672a03e77d69/predictions?version=2021-05-01', 
+        'deployement link', 
         json=payload_scoring, 
         headers=header
     )
@@ -76,9 +76,9 @@ def predict_flood(inputs):
 
 def predict_earthquake(inputs):
     # IBM Watson API key and token generation
-    API_KEY = " w9EwMCdVlZX2gj_9zKkda0sTjLyzKW94vS42niPMy6gv"
+    API_KEY = " your api key"
     token_response = requests.post(
-        'https://iam.cloud.ibm.com/identity/token', 
+        'identity token link', 
         data={"apikey": API_KEY, "grant_type": 'urn:ibm:params:oauth:grant-type:apikey'}
     )
     mltoken = token_response.json()["access_token"]
@@ -98,7 +98,7 @@ def predict_earthquake(inputs):
 
     # Send the request to the earthquake prediction model endpoint
     response_scoring = requests.post(
-        'https://eu-de.ml.cloud.ibm.com/ml/v4/deployments/59c280a2-4624-4145-8820-48382e1a4e5a/predictions?version=2021-05-01', 
+        'link:predictions?version=2021-05-01', 
         json=payload_scoring, 
         headers=header
     )
@@ -241,12 +241,12 @@ if menu == "Home":
     with col1:
         st.markdown("<h3 style='text-align: center;'>Flood Statistics</h3>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Monitor rainfall data and assess flood risks.</p>", unsafe_allow_html=True)
-        flood_image = Image.open("C:\\Users\\Pratiksha\\Documents\\VScode\\disaster_relief\\india-flood-prone-areas-map-2021.jpg")  # Replace with your actual path
+        flood_image = Image.open("india-flood-prone-areas-map-2021.jpg")  # Replace with your actual path
         st.image(flood_image, caption="Flood Monitoring", use_container_width=True)
     with col2:
         st.markdown("<h3 style='text-align: center;'>Earthquake Statistics</h3>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Track seismic activity and evaluate earthquake impacts.</p>", unsafe_allow_html=True)
-        earthquake_image = Image.open("C:\\Users\\Pratiksha\\Documents\\VScode\\disaster_relief\\Seismic-Map-of-India.png")  # Replace with your actual path
+        earthquake_image = Image.open("Seismic-Map-of-India.png")  # Replace with your actual path
         st.image(earthquake_image, caption="Earthquake Monitoring", use_container_width=True)
 
 
@@ -325,7 +325,7 @@ elif menu == "Resource Tracking":
     )
     
     # Load the resources.csv file
-    resources_file = "C:\\Users\\Pratiksha\\Documents\\VScode\\disaster_relief\\resources_data.csv"
+    resources_file = "resources_data.csv"
     resources_df = pd.read_csv(resources_file)
     
     # Check for missing or invalid data
@@ -388,3 +388,4 @@ elif menu == "Resource Tracking":
                     st.info("You chose not to allocate resources. The available resources are displayed above.")
         else:
             st.warning("Please enter latitude and longitude in the Disaster Monitoring tab first.")
+
